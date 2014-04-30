@@ -61,6 +61,8 @@ RUN install -d -o root -g root -m 755 /etc/dbconfig-common &&\
 # apg for generating passwords; msmtp for sending emails
 RUN apt-get -y install icinga icinga-idoutils icinga-web \
     libdbd-pgsql php5-pgsql postgresql-client apg msmtp-mta
+RUN cp /usr/share/doc/icinga-idoutils/examples/idoutils.cfg-sample \
+    /etc/icinga/modules/idoutils.cfg
 
 # allow user nagios to send mail (see di_configure_msmtp in functions.sh)
 RUN gpasswd -a nagios mail
